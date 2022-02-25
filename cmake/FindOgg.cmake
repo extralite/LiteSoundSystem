@@ -1,4 +1,4 @@
-set(OGG_DIR ${CMAKE_SOURCE_DIR}/ogg)
+set(OGG_DIR ${CMAKE_SOURCE_DIR}/codec/ogg)
 set(OGG_INCLUDE_DIR ${OGG_DIR}/include ${CMAKE_BINARY_DIR}/ogg/include)
 
 set(BUILD_TESTING OFF CACHE BOOL "" FORCE)
