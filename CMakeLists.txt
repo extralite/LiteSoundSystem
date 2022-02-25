@@ -34,7 +34,10 @@ set(${CMAKE_PROJECT_NAME}_INCLUDED_HEADERS
         ${OPENAL_INCLUDE_DIR})
 
 file(GLOB_RECURSE ${CMAKE_PROJECT_NAME}_SOURCES
-        src/OpusStreamDecoder.cpp)
+        src/OpusStreamDecoder.cpp
+        src/audio/AudioBuffer.cpp
+        src/audio/AudioDevice.cpp
+        src/audio/AudioSource.cpp)
 
 if (JAVA_BINDINGS)
     find_package(JNI REQUIRED)
