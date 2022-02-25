@@ -26,10 +26,8 @@ JNIEXPORT jshortArray JNICALL Java_io_github_ve_soundsystem_OpusDecoder_nread(JN
     int ret = decoder->read(pcm, OPUS_MAX_FRAME_SAMPLE_INTERLEAVED);
 
     if (ret > 0) {
-        int size = ret * 2;
-        jshortArray arr = env->NewShortArray(size);
-
-        env->SetShortArrayRegion(arr, 0, size, pcm);
+        jshortArray arr = env->NewShortArray(ret);
+        env->SetShortArrayRegion(arr, 0, ret, pcm);
 
         return arr;
     }

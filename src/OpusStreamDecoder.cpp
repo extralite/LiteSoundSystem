@@ -16,7 +16,7 @@ int OpusStreamDecoder::read(opus_int16 *buffer, int size) {
         fprintf(stderr, "Error decoding Opus data: %d\n", ret);
     }
 
-    return ret;
+    return ret * 2;
 }
 
 int OpusStreamDecoder::read(void *_stream, unsigned char *_ptr, int _nbytes) {
