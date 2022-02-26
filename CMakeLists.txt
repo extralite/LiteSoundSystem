@@ -28,7 +28,7 @@ set(ALSOFT_NO_CONFIG_UTIL ON CACHE BOOL "" FORCE)
 add_subdirectory(${OPENAL_DIR})
 
 set(${CMAKE_PROJECT_NAME}_INCLUDED_HEADERS
-        ${OGG_INCLUDE_DIR} 
+        ${OGG_INCLUDE_DIR}
         ${OPUS_INCLUDE_DIR}
         ${OPUSFILE_INCLUDE_DIR}
         ${OPENAL_INCLUDE_DIR})
@@ -43,7 +43,10 @@ if (JAVA_BINDINGS)
     find_package(JNI REQUIRED)
 
     list(APPEND ${CMAKE_PROJECT_NAME}_SOURCES
-            src/jni/JNIOpusDecoder.cpp)
+            src/jni/JNIOpusDecoder.cpp
+            src/jni/JNIAudioBuffer.cpp
+            src/jni/JNIAudioDevice.cpp
+            src/jni/JNIAudioSource.cpp)
     list(APPEND ${CMAKE_PROJECT_NAME}_INCLUDED_HEADERS
             ${JNI_INCLUDE_DIRS})
 endif ()
