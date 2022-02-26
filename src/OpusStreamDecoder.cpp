@@ -10,13 +10,15 @@ OpusStreamDecoder::~OpusStreamDecoder() {
 }
 
 int OpusStreamDecoder::read(opus_int16 *buffer, int size) {
-    int ret = op_read_stereo(stream, buffer, size);
+    int li;
+    int ret = op_read(stream, buffer, size, &li);
 
     if (ret < 0) {
         fprintf(stderr, "Error decoding Opus data: %d\n", ret);
     }
 
-    return ret * 2;
+    int channels = op_channel_count(stream, li);
+    return ret * channels;
 }
 
 int OpusStreamDecoder::read(void *_stream, unsigned char *_ptr, int _nbytes) {
