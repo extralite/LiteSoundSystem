@@ -24,6 +24,14 @@ void AudioSource::stop() const {
     alSourceStop(source);
 }
 
+void AudioSource::loop(bool loop) const {
+    alSourcei(source, AL_LOOPING, loop);
+}
+
+void AudioSource::gain(float gain) const {
+    alSourcef(source, AL_GAIN, gain);
+}
+
 bool AudioSource::isPlaying() const {
     ALint state;
     alGetSourcei(source, AL_SOURCE_STATE, &state);

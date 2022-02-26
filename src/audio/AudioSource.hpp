@@ -16,6 +16,10 @@ public:
 
     void stop() const;
 
+    void loop(bool loop) const;
+
+    void gain(float gain) const;
+
     bool isPlaying() const;
 
     void attach(const AudioBuffer &buffer) const;
