@@ -1,6 +1,7 @@
 #include "AudioBuffer.hpp"
 
-AudioBuffer::AudioBuffer() {
+AudioBuffer::AudioBuffer(AudioFormat format, int sampleRate)
+        : format(format), sampleRate(sampleRate) {
     alGenBuffers(1, &buffer);
 }
 
@@ -9,5 +10,5 @@ AudioBuffer::~AudioBuffer() {
 }
 
 void AudioBuffer::data(const void *data, size_t size) const {
-    alBufferData(buffer, AL_FORMAT_STEREO16, data, static_cast<ALint>(size), 48000);
+    alBufferData(buffer, format, data, static_cast<ALint>(size), sampleRate);
 }
