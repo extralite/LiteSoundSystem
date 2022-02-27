@@ -1,6 +1,7 @@
 #include "../audio/AudioSource.hpp"
 
 #include <jni.h>
+#include <cstdint>
 
 extern "C" {
 

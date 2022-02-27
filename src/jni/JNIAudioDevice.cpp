@@ -1,6 +1,7 @@
 #include "../audio/AudioDevice.hpp"
 
 #include <jni.h>
+#include <cstdint>
 
 extern "C" {
 

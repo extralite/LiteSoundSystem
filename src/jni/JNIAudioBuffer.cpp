@@ -1,6 +1,7 @@
 #include "../audio/AudioBuffer.hpp"
 
 #include <jni.h>
+#include <cstdint>
 
 extern "C" {
 

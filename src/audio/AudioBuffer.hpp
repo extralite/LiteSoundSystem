@@ -1,6 +1,7 @@
 #pragma once
 
 #include <al.h>
+#include <cstddef>
 
 enum AudioFormat : ALenum {
     MONO_SIGNED_16_BIT = AL_FORMAT_MONO16,
