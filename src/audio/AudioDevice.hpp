@@ -1,6 +1,6 @@
 #pragma once
 
-#include <alc.h>
+#include <AL/alc.h>
 
 class AudioDevice {
 public:

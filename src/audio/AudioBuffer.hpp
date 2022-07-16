@@ -1,6 +1,6 @@
 #pragma once
 
-#include <al.h>
+#include <AL/al.h>
 #include <cstddef>
 
 enum AudioFormat : ALenum {
