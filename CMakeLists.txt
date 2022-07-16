@@ -4,7 +4,7 @@ project(EpicSoundSystem)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 11)
 
-set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 set(OPUSFILE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/codec/opusfile)
 set(OPENAL_DIR ${CMAKE_CURRENT_SOURCE_DIR}/backend/openal)
@@ -13,6 +13,10 @@ get_filename_component(OGG_SOURCE_DIR codec/ogg REALPATH BASE_DIR ${CMAKE_CURREN
 get_filename_component(OPUS_SOURCE_DIR codec/opus REALPATH BASE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 
 option(JAVA_BINDINGS "Specify whether to build Java Native Interface bindings" OFF)
+
+if (EMSCRIPTEN)
+    set(OPUS_STACK_PROTECTOR OFF CACHE BOOL "" FORCE)
+endif ()
 
 if (MSVC)
     set(CMAKE_C_FLAGS_RELEASE "/O2")
@@ -33,16 +37,19 @@ if (UNIX)
     set_property(TARGET opus PROPERTY POSITION_INDEPENDENT_CODE ON)
 endif ()
 
-set(ALSOFT_UTILS OFF CACHE BOOL "" FORCE)
-set(ALSOFT_EXAMPLES OFF CACHE BOOL "" FORCE)
-set(ALSOFT_NO_CONFIG_UTIL ON CACHE BOOL "" FORCE)
-add_subdirectory(${OPENAL_DIR})
-
 set(ESS_INCLUDED_HEADERS
         ${OGG_INCLUDE_DIR}
         ${OPUS_INCLUDE_DIR}
-        ${OPUSFILE_INCLUDE_DIR}
-        ${OPENAL_INCLUDE_DIR})
+        ${OPUSFILE_INCLUDE_DIR})
+
+if (NOT EMSCRIPTEN)
+    set(ALSOFT_UTILS OFF CACHE BOOL "" FORCE)
+    set(ALSOFT_EXAMPLES OFF CACHE BOOL "" FORCE)
+    set(ALSOFT_NO_CONFIG_UTIL ON CACHE BOOL "" FORCE)
+    add_subdirectory(${OPENAL_DIR})
+
+    list(APPEND ESS_INCLUDED_HEADERS ${OPENAL_INCLUDE_DIR})
+endif ()
 
 file(GLOB_RECURSE ESS_SOURCES
         src/OpusStreamDecoder.cpp
@@ -68,5 +75,9 @@ add_library(EpicSoundSystem STATIC
 target_include_directories(EpicSoundSystem PRIVATE
         ${ESS_INCLUDED_HEADERS})
 
-target_link_libraries(EpicSoundSystem OpenAL ogg opus opusfile)
+if (NOT EMSCRIPTEN)
+    target_link_libraries(EpicSoundSystem OpenAL)
+endif ()
+
+target_link_libraries(EpicSoundSystem ogg opus opusfile)
 install(TARGETS EpicSoundSystem DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
