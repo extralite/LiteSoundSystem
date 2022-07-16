@@ -4,11 +4,13 @@ project(EpicSoundSystem)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 11)
 
-set(CMAKE_INSTALL_PREFIX ${CMAKE_SOURCE_DIR}/out)
-set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
+set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
-set(OPUSFILE_DIR ${CMAKE_SOURCE_DIR}/codec/opusfile)
-set(OPENAL_DIR ${CMAKE_SOURCE_DIR}/backend/openal)
+set(OPUSFILE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/codec/opusfile)
+set(OPENAL_DIR ${CMAKE_CURRENT_SOURCE_DIR}/backend/openal)
+
+get_filename_component(OGG_SOURCE_DIR codec/ogg REALPATH BASE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
+get_filename_component(OPUS_SOURCE_DIR codec/opus REALPATH BASE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 
 option(JAVA_BINDINGS "Specify whether to build Java Native Interface bindings" OFF)
 
@@ -36,13 +38,13 @@ set(ALSOFT_EXAMPLES OFF CACHE BOOL "" FORCE)
 set(ALSOFT_NO_CONFIG_UTIL ON CACHE BOOL "" FORCE)
 add_subdirectory(${OPENAL_DIR})
 
-set(${CMAKE_PROJECT_NAME}_INCLUDED_HEADERS
+set(ESS_INCLUDED_HEADERS
         ${OGG_INCLUDE_DIR}
         ${OPUS_INCLUDE_DIR}
         ${OPUSFILE_INCLUDE_DIR}
         ${OPENAL_INCLUDE_DIR})
 
-file(GLOB_RECURSE ${CMAKE_PROJECT_NAME}_SOURCES
+file(GLOB_RECURSE ESS_SOURCES
         src/OpusStreamDecoder.cpp
         src/audio/AudioBuffer.cpp
         src/audio/AudioDevice.cpp
@@ -51,20 +53,20 @@ file(GLOB_RECURSE ${CMAKE_PROJECT_NAME}_SOURCES
 if (JAVA_BINDINGS)
     find_package(JNI REQUIRED)
 
-    list(APPEND ${CMAKE_PROJECT_NAME}_SOURCES
+    list(APPEND ESS_SOURCES
             src/jni/JNIOpusDecoder.cpp
             src/jni/JNIAudioBuffer.cpp
             src/jni/JNIAudioDevice.cpp
             src/jni/JNIAudioSource.cpp)
-    list(APPEND ${CMAKE_PROJECT_NAME}_INCLUDED_HEADERS
+    list(APPEND ESS_INCLUDED_HEADERS
             ${JNI_INCLUDE_DIRS})
 endif ()
 
-add_library(${CMAKE_PROJECT_NAME} SHARED
-        ${${CMAKE_PROJECT_NAME}_SOURCES})
+add_library(EpicSoundSystem STATIC
+        ${ESS_SOURCES})
 
-target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
-        ${${CMAKE_PROJECT_NAME}_INCLUDED_HEADERS})
+target_include_directories(EpicSoundSystem PRIVATE
+        ${ESS_INCLUDED_HEADERS})
 
-target_link_libraries(${CMAKE_PROJECT_NAME} OpenAL ogg opus opusfile)
-install(TARGETS ${CMAKE_PROJECT_NAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+target_link_libraries(EpicSoundSystem OpenAL ogg opus opusfile)
+install(TARGETS EpicSoundSystem DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
