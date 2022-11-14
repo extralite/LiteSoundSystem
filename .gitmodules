@@ -1,12 +1,16 @@
-[submodule "ogg"]
+[submodule "codec/ogg"]
 	path = codec/ogg
 	url = https://github.com/xiph/ogg.git
-[submodule "opus"]
+	branch = master
+[submodule "codec/opus"]
 	path = codec/opus
 	url = https://github.com/xiph/opus.git
-[submodule "opusfile"]
+	branch = master
+[submodule "codec/opusfile"]
 	path = codec/opusfile
 	url = https://github.com/xiph/opusfile.git
-[submodule "openal-soft"]
+	branch = master
+[submodule "backend/openal"]
 	path = backend/openal
 	url = https://github.com/kcat/openal-soft.git
+	branch = 1.22.2
