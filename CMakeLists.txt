@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 3.0)
-project(EpicSoundSystem)
+project(LiteSoundSystem)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 get_filename_component(OGG_SOURCE_DIR codec/ogg REALPATH BASE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 get_filename_component(OPUS_SOURCE_DIR codec/opus REALPATH BASE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 
-file(GLOB_RECURSE ESS_SOURCES
+file(GLOB_RECURSE LITE_SS_SOURCES
         src/OpusStreamDecoder.cpp
         src/audio/AudioBuffer.cpp
         src/audio/AudioDevice.cpp
@@ -48,14 +48,14 @@ if (NOT EMSCRIPTEN)
     endif ()
 endif ()
 
-add_library(EpicSoundSystem SHARED ${ESS_SOURCES})
-set_property(TARGET EpicSoundSystem PROPERTY C_STANDARD 11)
-set_property(TARGET EpicSoundSystem PROPERTY CXX_STANDARD 11)
+add_library(LiteSoundSystem SHARED ${LITE_SS_SOURCES})
+set_property(TARGET LiteSoundSystem PROPERTY C_STANDARD 11)
+set_property(TARGET LiteSoundSystem PROPERTY CXX_STANDARD 11)
 
 if (NOT EMSCRIPTEN)
-    target_link_libraries(EpicSoundSystem PRIVATE OpenAL)
-    target_compile_definitions(EpicSoundSystem PRIVATE AL_LIBTYPE_STATIC)
+    target_link_libraries(LiteSoundSystem PRIVATE OpenAL)
+    target_compile_definitions(LiteSoundSystem PRIVATE AL_LIBTYPE_STATIC)
 endif ()
 
-target_link_libraries(EpicSoundSystem PRIVATE opusfile)
-install(TARGETS EpicSoundSystem DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+target_link_libraries(LiteSoundSystem PRIVATE opusfile)
+install(TARGETS LiteSoundSystem DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
