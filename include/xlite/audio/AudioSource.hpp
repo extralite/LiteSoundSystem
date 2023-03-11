@@ -2,7 +2,7 @@
 
 #include <AL/al.h>
 
-#include "AudioBuffer.hpp"
+#include <xlite/audio/AudioBuffer.hpp>
 
 class AudioSource {
 public:

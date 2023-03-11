@@ -1,4 +1,4 @@
-#include "AudioSource.hpp"
+#include <xlite/audio/AudioSource.hpp>
 
 AudioSource::AudioSource(bool loop) {
     alGenSources(1, &source);

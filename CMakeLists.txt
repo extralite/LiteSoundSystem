@@ -48,6 +48,9 @@ if (NOT EMSCRIPTEN)
     endif ()
 endif ()
 
+set(LITE_SS_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/include
+        CACHE PATH "LiteSoundSystem include directory" FORCE)
+
 add_library(LiteSoundSystem SHARED ${LITE_SS_SOURCES})
 set_property(TARGET LiteSoundSystem PROPERTY C_STANDARD 11)
 set_property(TARGET LiteSoundSystem PROPERTY CXX_STANDARD 11)
@@ -58,4 +61,5 @@ if (NOT EMSCRIPTEN)
 endif ()
 
 target_link_libraries(LiteSoundSystem PRIVATE opusfile)
+target_include_directories(LiteSoundSystem PUBLIC ${LITE_SS_INCLUDE_DIRS})
 install(TARGETS LiteSoundSystem DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)

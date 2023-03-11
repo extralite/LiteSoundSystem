@@ -1,4 +1,4 @@
-#include "AudioBuffer.hpp"
+#include <xlite/audio/AudioBuffer.hpp>
 
 AudioBuffer::AudioBuffer(AudioFormat format, int sampleRate)
         : format(format), sampleRate(sampleRate) {

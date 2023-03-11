@@ -1,4 +1,4 @@
-#include "AudioDevice.hpp"
+#include <xlite/audio/AudioDevice.hpp>
 
 AudioDevice::AudioDevice(const char *deviceName) {
     device = alcOpenDevice(deviceName);
