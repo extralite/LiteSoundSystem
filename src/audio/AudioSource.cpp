@@ -1,16 +1,18 @@
 #include <xlite/audio/AudioSource.hpp>
 
-AudioSource::AudioSource(bool loop) {
+using namespace Lite::Audio;
+
+Source::Source(bool loop) {
     alGenSources(1, &source);
     alSourcei(source, AL_LOOPING, loop);
     alSourcef(source, AL_GAIN, 1.f);
 }
 
-AudioSource::~AudioSource() {
+Source::~Source() {
     alDeleteSources(1, &source);
 }
 
-void AudioSource::play() const {
+void Source::play() const {
     ALint state;
     alGetSourcei(source, AL_SOURCE_STATE, &state);
 
@@ -20,29 +22,29 @@ void AudioSource::play() const {
     alSourcePlay(source);
 }
 
-void AudioSource::stop() const {
+void Source::stop() const {
     alSourceStop(source);
 }
 
-void AudioSource::loop(bool loop) const {
+void Source::loop(bool loop) const {
     alSourcei(source, AL_LOOPING, loop);
 }
 
-void AudioSource::gain(float gain) const {
+void Source::gain(float gain) const {
     alSourcef(source, AL_GAIN, gain);
 }
 
-bool AudioSource::isPlaying() const {
+bool Source::isPlaying() const {
     ALint state;
     alGetSourcei(source, AL_SOURCE_STATE, &state);
 
     return AL_PLAYING == state;
 }
 
-void AudioSource::attach(const AudioBuffer &buffer) const {
+void Source::attach(const Buffer &buffer) const {
     alSourcei(source, AL_BUFFER, buffer.buffer);
 }
 
-void AudioSource::detach() const {
+void Source::detach() const {
     alSourcei(source, AL_BUFFER, 0);
 }

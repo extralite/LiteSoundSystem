@@ -2,15 +2,19 @@
 
 #include <AL/alc.h>
 
-class AudioDevice {
-public:
-    explicit AudioDevice(const char *deviceName);
+namespace Lite::Audio {
 
-    AudioDevice() : AudioDevice("OpenAL Soft") {}
+    class Device {
+    public:
+        explicit Device(const char *deviceName);
 
-    ~AudioDevice();
+        Device() : Device("OpenAL Soft") {}
 
-private:
-    ALCdevice *device;
-    ALCcontext *context;
-};
+        ~Device();
+
+    private:
+        ALCdevice *device;
+        ALCcontext *context;
+    };
+
+}// namespace Lite::Audio

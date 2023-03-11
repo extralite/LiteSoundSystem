@@ -3,24 +3,28 @@
 #include <AL/al.h>
 #include <cstddef>
 
-enum AudioFormat : ALenum {
-    MONO_SIGNED_16_BIT = AL_FORMAT_MONO16,
-    STEREO_SIGNED_16_BIT = AL_FORMAT_STEREO16,
-};
+namespace Lite::Audio {
 
-class AudioBuffer {
-    friend class AudioSource;
+    enum Format : ALenum {
+        MONO_SIGNED_16_BIT = AL_FORMAT_MONO16,
+        STEREO_SIGNED_16_BIT = AL_FORMAT_STEREO16,
+    };
 
-public:
-    AudioBuffer(AudioFormat format, int sampleRate);
+    class Buffer {
+        friend class Source;
 
-    ~AudioBuffer();
+    public:
+        Buffer(Format format, int sampleRate);
 
-    void data(const void *data, size_t size) const;
+        ~Buffer();
 
-private:
-    ALuint buffer = 0;
+        void data(const void *data, size_t size) const;
 
-    AudioFormat format;
-    int sampleRate;
-};
+    private:
+        ALuint buffer = 0;
+
+        Format format;
+        int sampleRate;
+    };
+
+}// namespace Lite::Audio

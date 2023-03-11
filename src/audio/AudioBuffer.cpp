@@ -1,14 +1,16 @@
 #include <xlite/audio/AudioBuffer.hpp>
 
-AudioBuffer::AudioBuffer(AudioFormat format, int sampleRate)
-        : format(format), sampleRate(sampleRate) {
+using namespace Lite::Audio;
+
+Buffer::Buffer(Format format, int sampleRate)
+    : format(format), sampleRate(sampleRate) {
     alGenBuffers(1, &buffer);
 }
 
-AudioBuffer::~AudioBuffer() {
+Buffer::~Buffer() {
     alDeleteBuffers(1, &buffer);
 }
 
-void AudioBuffer::data(const void *data, size_t size) const {
+void Buffer::data(const void *data, size_t size) const {
     alBufferData(buffer, format, data, static_cast<ALint>(size), sampleRate);
 }

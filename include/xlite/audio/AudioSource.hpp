@@ -4,28 +4,32 @@
 
 #include <xlite/audio/AudioBuffer.hpp>
 
-class AudioSource {
-public:
-    explicit AudioSource(bool loop);
+namespace Lite::Audio {
 
-    AudioSource() : AudioSource(false) {}
+    class Source {
+    public:
+        explicit Source(bool loop);
 
-    ~AudioSource();
+        Source() : Source(false) {}
 
-    void play() const;
+        ~Source();
 
-    void stop() const;
+        void play() const;
 
-    void loop(bool loop) const;
+        void stop() const;
 
-    void gain(float gain) const;
+        void loop(bool loop) const;
 
-    bool isPlaying() const;
+        void gain(float gain) const;
 
-    void attach(const AudioBuffer &buffer) const;
+        bool isPlaying() const;
 
-    void detach() const;
+        void attach(const Buffer &buffer) const;
 
-private:
-    ALuint source = 0;
-};
+        void detach() const;
+
+    private:
+        ALuint source = 0;
+    };
+
+}// namespace Lite::Audio
