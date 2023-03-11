@@ -1,6 +1,6 @@
-#include <xlite/audio/Buffer.hpp>
+#include <xlite/oal/Buffer.hpp>
 
-using namespace Lite::Audio;
+using namespace Lite::Sound;
 
 Buffer::Buffer(Format format, int sampleRate)
     : format(format), sampleRate(sampleRate) {

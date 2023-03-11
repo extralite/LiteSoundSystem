@@ -2,9 +2,9 @@
 
 #include <AL/al.h>
 
-#include <xlite/audio/Buffer.hpp>
+#include <xlite/oal/Buffer.hpp>
 
-namespace Lite::Audio {
+namespace Lite::Sound {
 
     class Source {
     public:
@@ -32,4 +32,4 @@ namespace Lite::Audio {
         ALuint source = 0;
     };
 
-}// namespace Lite::Audio
+}// namespace Lite::Sound

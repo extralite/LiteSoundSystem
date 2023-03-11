@@ -1,6 +1,6 @@
-#include <xlite/audio/Device.hpp>
+#include <xlite/oal/Device.hpp>
 
-using namespace Lite::Audio;
+using namespace Lite::Sound;
 
 Device::Device(const char *deviceName) {
     device = alcOpenDevice(deviceName);

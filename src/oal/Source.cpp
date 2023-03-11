@@ -1,6 +1,6 @@
-#include <xlite/audio/Source.hpp>
+#include <xlite/oal/Source.hpp>
 
-using namespace Lite::Audio;
+using namespace Lite::Sound;
 
 Source::Source(bool loop) {
     alGenSources(1, &source);

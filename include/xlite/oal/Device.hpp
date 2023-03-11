@@ -2,7 +2,7 @@
 
 #include <AL/alc.h>
 
-namespace Lite::Audio {
+namespace Lite::Sound {
 
     class Device {
     public:
@@ -17,4 +17,4 @@ namespace Lite::Audio {
         ALCcontext *context;
     };
 
-}// namespace Lite::Audio
+}// namespace Lite::Sound

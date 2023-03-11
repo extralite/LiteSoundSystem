@@ -3,7 +3,7 @@
 #include <AL/al.h>
 #include <cstddef>
 
-namespace Lite::Audio {
+namespace Lite::Sound {
 
     enum Format : ALenum {
         MONO_SIGNED_16_BIT = AL_FORMAT_MONO16,
@@ -29,4 +29,4 @@ namespace Lite::Audio {
         int sampleRate;
     };
 
-}// namespace Lite::Audio
+}// namespace Lite::Sound
