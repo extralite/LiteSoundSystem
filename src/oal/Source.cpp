@@ -46,5 +46,5 @@ void Source::attach(const Buffer &buffer) const {
 }
 
 void Source::detach() const {
-    alSourcei(source, AL_BUFFER, 0);
+    alSourcei(source, AL_BUFFER, AL_NONE);
 }
