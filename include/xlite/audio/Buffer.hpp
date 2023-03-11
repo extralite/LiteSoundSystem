@@ -11,14 +11,16 @@ namespace Lite::Audio {
     };
 
     class Buffer {
-        friend class Source;
-
     public:
         Buffer(Format format, int sampleRate);
 
         ~Buffer();
 
         void data(const void *data, size_t size) const;
+
+        inline ALuint getBuffer() const {
+            return buffer;
+        }
 
     private:
         ALuint buffer = 0;

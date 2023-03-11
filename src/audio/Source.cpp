@@ -42,7 +42,7 @@ bool Source::isPlaying() const {
 }
 
 void Source::attach(const Buffer &buffer) const {
-    alSourcei(source, AL_BUFFER, buffer.buffer);
+    alSourcei(source, AL_BUFFER, buffer.getBuffer());
 }
 
 void Source::detach() const {
