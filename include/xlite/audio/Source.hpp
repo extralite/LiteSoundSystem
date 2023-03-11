@@ -2,7 +2,7 @@
 
 #include <AL/al.h>
 
-#include <xlite/audio/AudioBuffer.hpp>
+#include <xlite/audio/Buffer.hpp>
 
 namespace Lite::Audio {
 

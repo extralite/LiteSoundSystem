@@ -8,9 +8,9 @@ get_filename_component(OPUS_SOURCE_DIR codec/opus REALPATH BASE_DIR ${CMAKE_CURR
 
 file(GLOB_RECURSE LITE_SS_SOURCES
         src/OpusStreamDecoder.cpp
-        src/audio/AudioBuffer.cpp
-        src/audio/AudioDevice.cpp
-        src/audio/AudioSource.cpp)
+        src/audio/Buffer.cpp
+        src/audio/Device.cpp
+        src/audio/Source.cpp)
 
 if (EMSCRIPTEN)
     set(OPUS_STACK_PROTECTOR OFF CACHE BOOL "" FORCE)

@@ -1,4 +1,4 @@
-#include <xlite/audio/AudioBuffer.hpp>
+#include <xlite/audio/Buffer.hpp>
 
 using namespace Lite::Audio;
 

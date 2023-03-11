@@ -1,4 +1,4 @@
-#include <xlite/audio/AudioDevice.hpp>
+#include <xlite/audio/Device.hpp>
 
 using namespace Lite::Audio;
 
