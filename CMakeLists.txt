@@ -54,6 +54,7 @@ set(LITE_SS_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/include
 add_library(LiteSoundSystem SHARED ${LITE_SS_SOURCES})
 set_property(TARGET LiteSoundSystem PROPERTY C_STANDARD 11)
 set_property(TARGET LiteSoundSystem PROPERTY CXX_STANDARD 11)
+set_property(TARGET LiteSoundSystem PROPERTY LIBRARY_OUTPUT_NAME litesound)
 
 if (NOT EMSCRIPTEN)
     target_link_libraries(LiteSoundSystem PRIVATE OpenAL)
