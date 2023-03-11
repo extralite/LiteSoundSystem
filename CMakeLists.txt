@@ -6,8 +6,6 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 get_filename_component(OGG_SOURCE_DIR codec/ogg REALPATH BASE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 get_filename_component(OPUS_SOURCE_DIR codec/opus REALPATH BASE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 
-option(JAVA_BINDINGS "Specify whether to build Java Native Interface bindings" OFF)
-
 file(GLOB_RECURSE ESS_SOURCES
         src/OpusStreamDecoder.cpp
         src/audio/AudioBuffer.cpp
@@ -48,16 +46,6 @@ if (NOT EMSCRIPTEN)
     if (UNIX)
         set_property(TARGET OpenAL PROPERTY POSITION_INDEPENDENT_CODE ON)
     endif ()
-
-    if (JAVA_BINDINGS)
-        find_package(JNI REQUIRED)
-
-        list(APPEND ESS_SOURCES
-                src/jni/JNIOpusDecoder.cpp
-                src/jni/JNIAudioBuffer.cpp
-                src/jni/JNIAudioDevice.cpp
-                src/jni/JNIAudioSource.cpp)
-    endif ()
 endif ()
 
 add_library(EpicSoundSystem SHARED ${ESS_SOURCES})
@@ -67,10 +55,6 @@ set_property(TARGET EpicSoundSystem PROPERTY CXX_STANDARD 11)
 if (NOT EMSCRIPTEN)
     target_link_libraries(EpicSoundSystem PRIVATE OpenAL)
     target_compile_definitions(EpicSoundSystem PRIVATE AL_LIBTYPE_STATIC)
-
-    if (JAVA_BINDINGS)
-        target_include_directories(EpicSoundSystem PRIVATE ${JNI_INCLUDE_DIRS})
-    endif ()
 endif ()
 
 target_link_libraries(EpicSoundSystem PRIVATE opusfile)
