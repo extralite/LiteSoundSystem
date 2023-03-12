@@ -4,7 +4,7 @@
 
 using namespace Lite::Sound;
 
-Buffer::Buffer(Format format, int sampleRate)
+Buffer::Buffer(BufferFormat format, int sampleRate)
     : format(format), sampleRate(sampleRate) {
     alGenBuffers(1, &buffer);
 }

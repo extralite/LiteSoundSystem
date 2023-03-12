@@ -7,7 +7,7 @@ namespace Lite {
 
     namespace Sound {
 
-        enum Format : int {
+        enum BufferFormat : int {
             /** Signed 16-bit mono buffer format. */
             MONO_SIGNED_16_BIT = 0x1101,
             /** Unsigned 8-bit mono buffer format. */
@@ -20,7 +20,7 @@ namespace Lite {
 
         class Buffer {
         public:
-            Buffer(Format format, int sampleRate);
+            Buffer(BufferFormat format, int sampleRate);
 
             ~Buffer();
 
@@ -33,7 +33,7 @@ namespace Lite {
         private:
             uint32_t buffer = 0;
 
-            Format format;
+            BufferFormat format;
             int sampleRate;
         };
 
