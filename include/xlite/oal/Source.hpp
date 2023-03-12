@@ -14,19 +14,13 @@ namespace Lite {
             Source();
             ~Source();
 
-            void play() const;
-
-            void stop() const;
-
-            void loop(bool loop) const;
-
-            void gain(float gain) const;
-
-            bool isPlaying() const;
-
-            void attach(const Buffer &buffer) const;
-
-            void detach() const;
+            void Play() const;
+            void Stop() const;
+            void Loop(bool loop) const;
+            void Gain(float gain) const;
+            bool IsPlaying() const;
+            void Attach(const Buffer &buffer) const;
+            void Detach() const;
 
         private:
             uint32_t source = 0;

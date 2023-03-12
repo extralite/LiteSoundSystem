@@ -23,12 +23,11 @@ namespace Lite {
         class LITE_API Buffer {
         public:
             Buffer(BufferFormat format, int sampleRate);
-
             ~Buffer();
 
-            void data(const void *data, size_t size) const;
+            void Data(const void *data, size_t size) const;
 
-            inline uint32_t getBuffer() const {
+            inline uint32_t GetBuffer() const {
                 return buffer;
             }
 

@@ -13,6 +13,6 @@ Buffer::~Buffer() {
     alDeleteBuffers(1, &buffer);
 }
 
-void Buffer::data(const void *data, size_t size) const {
+void Buffer::Data(const void *data, size_t size) const {
     alBufferData(buffer, format, data, static_cast<ALint>(size), sampleRate);
 }

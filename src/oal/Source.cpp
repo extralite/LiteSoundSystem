@@ -13,7 +13,7 @@ Source::~Source() {
     alDeleteSources(1, &source);
 }
 
-void Source::play() const {
+void Source::Play() const {
     ALint state;
     alGetSourcei(source, AL_SOURCE_STATE, &state);
 
@@ -23,29 +23,29 @@ void Source::play() const {
     alSourcePlay(source);
 }
 
-void Source::stop() const {
+void Source::Stop() const {
     alSourceStop(source);
 }
 
-void Source::loop(bool loop) const {
+void Source::Loop(bool loop) const {
     alSourcei(source, AL_LOOPING, loop);
 }
 
-void Source::gain(float gain) const {
+void Source::Gain(float gain) const {
     alSourcef(source, AL_GAIN, gain);
 }
 
-bool Source::isPlaying() const {
+bool Source::IsPlaying() const {
     ALint state;
     alGetSourcei(source, AL_SOURCE_STATE, &state);
 
     return AL_PLAYING == state;
 }
 
-void Source::attach(const Buffer &buffer) const {
-    alSourcei(source, AL_BUFFER, buffer.getBuffer());
+void Source::Attach(const Buffer &buffer) const {
+    alSourcei(source, AL_BUFFER, buffer.GetBuffer());
 }
 
-void Source::detach() const {
+void Source::Detach() const {
     alSourcei(source, AL_BUFFER, AL_NONE);
 }
