@@ -1,18 +1,22 @@
 #pragma once
 
-namespace Lite::Sound {
+namespace Lite {
 
-    class Device {
-    public:
-        explicit Device(const char *deviceName);
+    namespace Sound {
 
-        Device() : Device("OpenAL Soft") {}
+        class Device {
+        public:
+            explicit Device(const char *deviceName);
 
-        ~Device();
+            Device() : Device("OpenAL Soft") {}
 
-    private:
-        void *device;
-        void *context;
-    };
+            ~Device();
 
-}// namespace Lite::Sound
+        private:
+            void *device;
+            void *context;
+        };
+
+    }// namespace Sound
+
+}// namespace Lite

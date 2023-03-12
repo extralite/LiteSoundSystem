@@ -3,36 +3,40 @@
 #include <cstddef>
 #include <cstdint>
 
-namespace Lite::Sound {
+namespace Lite {
 
-    enum Format : int {
-        /** Signed 16-bit mono buffer format. */
-        MONO_SIGNED_16_BIT = 0x1101,
-        /** Unsigned 8-bit mono buffer format. */
-        MONO_UNSIGNED_8_BIT = 0x1100,
-        /** Signed 16-bit stereo buffer format. */
-        STEREO_SIGNED_16_BIT = 0x1103,
-        /** Unsigned 8-bit stereo buffer format. */
-        STEREO_UNSIGNED_8_BIT = 0x1102,
-    };
+    namespace Sound {
 
-    class Buffer {
-    public:
-        Buffer(Format format, int sampleRate);
+        enum Format : int {
+            /** Signed 16-bit mono buffer format. */
+            MONO_SIGNED_16_BIT = 0x1101,
+            /** Unsigned 8-bit mono buffer format. */
+            MONO_UNSIGNED_8_BIT = 0x1100,
+            /** Signed 16-bit stereo buffer format. */
+            STEREO_SIGNED_16_BIT = 0x1103,
+            /** Unsigned 8-bit stereo buffer format. */
+            STEREO_UNSIGNED_8_BIT = 0x1102,
+        };
 
-        ~Buffer();
+        class Buffer {
+        public:
+            Buffer(Format format, int sampleRate);
 
-        void data(const void *data, size_t size) const;
+            ~Buffer();
 
-        inline uint32_t getBuffer() const {
-            return buffer;
-        }
+            void data(const void *data, size_t size) const;
 
-    private:
-        uint32_t buffer = 0;
+            inline uint32_t getBuffer() const {
+                return buffer;
+            }
 
-        Format format;
-        int sampleRate;
-    };
+        private:
+            uint32_t buffer = 0;
 
-}// namespace Lite::Sound
+            Format format;
+            int sampleRate;
+        };
+
+    }// namespace Sound
+
+}// namespace Lite

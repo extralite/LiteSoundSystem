@@ -4,32 +4,36 @@
 
 #include <cstdint>
 
-namespace Lite::Sound {
+namespace Lite {
 
-    class Source {
-    public:
-        Source();
-        ~Source();
+    namespace Sound {
 
-        void play() const;
+        class Source {
+        public:
+            Source();
+            ~Source();
 
-        void stop() const;
+            void play() const;
 
-        void loop(bool loop) const;
+            void stop() const;
 
-        void gain(float gain) const;
+            void loop(bool loop) const;
 
-        bool isPlaying() const;
+            void gain(float gain) const;
 
-        void attach(const Buffer &buffer) const;
+            bool isPlaying() const;
 
-        void detach() const;
+            void attach(const Buffer &buffer) const;
 
-    private:
-        uint32_t source = 0;
+            void detach() const;
 
-        Source(Source &) = delete;
-        Source(Source const &) = delete;
-    };
+        private:
+            uint32_t source = 0;
 
-}// namespace Lite::Sound
+            Source(Source &) = delete;
+            Source(Source const &) = delete;
+        };
+
+    }// namespace Sound
+
+}// namespace Lite
