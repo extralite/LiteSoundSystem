@@ -1,7 +1,5 @@
 #pragma once
 
-#include <AL/alc.h>
-
 namespace Lite::Sound {
 
     class Device {
@@ -13,8 +11,8 @@ namespace Lite::Sound {
         ~Device();
 
     private:
-        ALCdevice *device;
-        ALCcontext *context;
+        void *device;
+        void *context;
     };
 
 }// namespace Lite::Sound

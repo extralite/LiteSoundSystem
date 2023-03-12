@@ -1,5 +1,7 @@
 #include <xlite/oal/Source.hpp>
 
+#include <AL/al.h>
+
 using namespace Lite::Sound;
 
 Source::Source(bool loop) {

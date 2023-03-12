@@ -1,5 +1,7 @@
 #include <xlite/oal/Buffer.hpp>
 
+#include <AL/al.h>
+
 using namespace Lite::Sound;
 
 Buffer::Buffer(Format format, int sampleRate)

@@ -1,5 +1,7 @@
 #include <xlite/oal/Device.hpp>
 
+#include <AL/alc.h>
+
 using namespace Lite::Sound;
 
 Device::Device(const char *deviceName) {
@@ -10,11 +12,11 @@ Device::Device(const char *deviceName) {
             ALC_STEREO_SOURCES, 256,
             0};
 
-    context = alcCreateContext(device, attributes);
-    alcMakeContextCurrent(context);
+    context = alcCreateContext(static_cast<ALCdevice *>(device), attributes);
+    alcMakeContextCurrent(static_cast<ALCcontext *>(context));
 }
 
 Device::~Device() {
-    alcDestroyContext(context);
-    alcCloseDevice(device);
+    alcDestroyContext(static_cast<ALCcontext *>(context));
+    alcCloseDevice(static_cast<ALCdevice *>(device));
 }

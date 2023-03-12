@@ -1,8 +1,8 @@
 #pragma once
 
-#include <AL/al.h>
-
 #include <xlite/oal/Buffer.hpp>
+
+#include <cstdint>
 
 namespace Lite::Sound {
 
@@ -29,7 +29,7 @@ namespace Lite::Sound {
         void detach() const;
 
     private:
-        ALuint source = 0;
+        uint32_t source = 0;
     };
 
 }// namespace Lite::Sound
