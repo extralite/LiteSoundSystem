@@ -52,6 +52,8 @@ set(LITE_SS_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/include
         CACHE PATH "LiteSoundSystem include directory" FORCE)
 
 add_library(LiteSoundSystem SHARED ${LITE_SS_SOURCES})
+target_compile_definitions(LiteSoundSystem PRIVATE LITE_API_EXPORT)
+
 set_property(TARGET LiteSoundSystem PROPERTY C_STANDARD 11)
 set_property(TARGET LiteSoundSystem PROPERTY CXX_STANDARD 11)
 set_property(TARGET LiteSoundSystem PROPERTY LIBRARY_OUTPUT_NAME litesound)

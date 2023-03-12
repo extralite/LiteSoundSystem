@@ -1,5 +1,7 @@
 #pragma once
 
+#include <xlite/Config.hpp>
+
 #include <cstddef>
 #include <cstdint>
 
@@ -18,7 +20,7 @@ namespace Lite {
             STEREO_UNSIGNED_8_BIT = 0x1102,
         };
 
-        class Buffer {
+        class LITE_API Buffer {
         public:
             Buffer(BufferFormat format, int sampleRate);
 

@@ -1,5 +1,6 @@
 #pragma once
 
+#include <xlite/Config.hpp>
 #include <xlite/oal/Buffer.hpp>
 
 #include <cstdint>
@@ -8,7 +9,7 @@ namespace Lite {
 
     namespace Sound {
 
-        class Source {
+        class LITE_API Source {
         public:
             Source();
             ~Source();
