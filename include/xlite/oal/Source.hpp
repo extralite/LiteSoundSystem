@@ -8,10 +8,7 @@ namespace Lite::Sound {
 
     class Source {
     public:
-        explicit Source(bool loop);
-
-        Source() : Source(false) {}
-
+        Source();
         ~Source();
 
         void play() const;
@@ -30,6 +27,9 @@ namespace Lite::Sound {
 
     private:
         uint32_t source = 0;
+
+        Source(Source &) = delete;
+        Source(Source const &) = delete;
     };
 
 }// namespace Lite::Sound

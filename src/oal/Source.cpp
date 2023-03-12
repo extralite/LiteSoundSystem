@@ -4,9 +4,8 @@
 
 using namespace Lite::Sound;
 
-Source::Source(bool loop) {
+Source::Source() {
     alGenSources(1, &source);
-    alSourcei(source, AL_LOOPING, loop);
     alSourcef(source, AL_GAIN, 1.f);
 }
 
