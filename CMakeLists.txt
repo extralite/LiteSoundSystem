@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.0)
 project(LiteSoundSystem)
 
+include(cmake/ffmpeg.cmake)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 get_filename_component(OGG_SOURCE_DIR codec/ogg REALPATH BASE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
@@ -67,6 +68,6 @@ if (NOT EMSCRIPTEN)
     target_compile_definitions(LiteSoundSystem PRIVATE AL_LIBTYPE_STATIC)
 endif ()
 
-target_link_libraries(LiteSoundSystem PRIVATE opusfile)
+target_link_libraries(LiteSoundSystem PRIVATE avcodec avformat avutil swresample)
 target_include_directories(LiteSoundSystem PUBLIC ${LITE_SS_INCLUDE_DIRS})
 install(TARGETS LiteSoundSystem DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)

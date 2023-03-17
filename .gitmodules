@@ -14,3 +14,7 @@
 	path = backend/openal
 	url = https://github.com/kcat/openal-soft.git
 	branch = 1.22.2
+[submodule "ffmpeg"]
+	path = ffmpeg
+	url = https://git.ffmpeg.org/ffmpeg.git
+	branch = n6.0
