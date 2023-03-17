@@ -1,5 +1,0 @@
-set(OPUS_DIR ${OPUS_SOURCE_DIR})
-set(OPUS_INCLUDE_DIR ${OPUS_DIR}/include)
-
-set(BUILD_TESTING OFF CACHE BOOL "" FORCE)
-add_subdirectory(${OPUS_DIR} ${CMAKE_BINARY_DIR}/opus)

@@ -2,13 +2,8 @@ cmake_minimum_required(VERSION 3.0)
 project(LiteSoundSystem)
 
 include(cmake/ffmpeg.cmake)
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
-
-get_filename_component(OGG_SOURCE_DIR codec/ogg REALPATH BASE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
-get_filename_component(OPUS_SOURCE_DIR codec/opus REALPATH BASE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 
 file(GLOB_RECURSE LITE_SS_SOURCES
-        src/OpusStreamDecoder.cpp
         src/oal/Buffer.cpp
         src/oal/Device.cpp
         src/oal/Source.cpp
@@ -16,10 +11,6 @@ file(GLOB_RECURSE LITE_SS_SOURCES
         src/sound/Engine.cpp
         src/sound/Pool.cpp
 )
-
-if (EMSCRIPTEN)
-    set(OPUS_STACK_PROTECTOR OFF CACHE BOOL "" FORCE)
-endif ()
 
 if (MSVC)
     set(CMAKE_C_FLAGS_RELEASE "/O2")
@@ -29,15 +20,6 @@ endif ()
 if (UNIX)
     set(CMAKE_C_FLAGS_RELEASE "-O3")
     set(CMAKE_CXX_FLAGS_RELEASE "-O3")
-endif ()
-
-set(OP_DISABLE_HTTP ON CACHE BOOL "" FORCE)
-set(OP_DISABLE_DOCS ON CACHE BOOL "" FORCE)
-set(OP_DISABLE_EXAMPLES ON CACHE BOOL "" FORCE)
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/codec/opusfile ${CMAKE_BINARY_DIR}/opusfile)
-
-if (UNIX)
-    set_property(TARGET opus PROPERTY POSITION_INDEPENDENT_CODE ON)
 endif ()
 
 if (NOT EMSCRIPTEN)
