@@ -8,8 +8,8 @@ Device::Device(const char *deviceName) {
     device = alcOpenDevice(deviceName);
 
     ALCint attributes[5] = {
-            ALC_MONO_SOURCES, 256,
-            ALC_STEREO_SOURCES, 256,
+            ALC_MONO_SOURCES, LITE_MAX_MONO_SOURCES,
+            ALC_STEREO_SOURCES, LITE_MAX_STEREO_SOURCES,
             0};
 
     context = alcCreateContext(static_cast<ALCdevice *>(device), attributes);

@@ -49,3 +49,10 @@ void Source::Attach(const Buffer &buffer) const {
 void Source::Detach() const {
     alSourcei(source, AL_BUFFER, AL_NONE);
 }
+
+bool Source::Available() const {
+    ALenum state;
+    alGetSourcei(source, AL_SOURCE_STATE, &state);
+
+    return AL_STOPPED == state;
+}

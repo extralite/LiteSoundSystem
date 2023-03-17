@@ -21,6 +21,7 @@ namespace Lite {
             bool IsPlaying() const;
             void Attach(const Buffer &buffer) const;
             void Detach() const;
+            bool Available() const;
 
         private:
             uint32_t source = 0;

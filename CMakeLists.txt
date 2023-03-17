@@ -10,7 +10,11 @@ file(GLOB_RECURSE LITE_SS_SOURCES
         src/OpusStreamDecoder.cpp
         src/oal/Buffer.cpp
         src/oal/Device.cpp
-        src/oal/Source.cpp)
+        src/oal/Source.cpp
+        src/sound/Audio.cpp
+        src/sound/Engine.cpp
+        src/sound/Pool.cpp
+)
 
 if (EMSCRIPTEN)
     set(OPUS_STACK_PROTECTOR OFF CACHE BOOL "" FORCE)
