@@ -2,7 +2,9 @@
 
 #include <AL/al.h>
 
-using namespace Lite::Sound;
+namespace lite {
+
+namespace sound {
 
 Source::Source() {
     alGenSources(1, &source);
@@ -56,3 +58,7 @@ bool Source::Available() const {
 
     return AL_STOPPED == state;
 }
+
+} // namespace sound
+
+} // namespace lite

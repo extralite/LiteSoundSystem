@@ -8,22 +8,22 @@
 #include <memory>
 #include <string>
 
-namespace Lite {
+namespace lite {
 
-    namespace Sound {
+namespace sound {
 
-        class LITE_API Engine {
-        public:
-            Engine() = default;
-            ~Engine() = default;
+class LITE_API Engine {
+public:
+    Engine() = default;
+    ~Engine() = default;
 
-            bool Play(const Audio &audio);
+    bool Play(const Audio &audio);
 
-        private:
-            Device device;
-            Pool pool;
-        };
+private:
+    Device device;
+    Pool pool;
+};
 
-    }// namespace Sound
+} // namespace sound
 
-}// namespace Lite
+} // namespace lite

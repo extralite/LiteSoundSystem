@@ -1,8 +1,10 @@
 #include <xlite/sound/Audio.hpp>
 
-using namespace Lite::Sound;
+namespace lite {
 
-Audio::Audio(BufferFormat channelFormat, int sampleRate, const void *data, size_t size)
+namespace sound {
+
+Audio::Audio(BufferFormat channelFormat, int sampleRate, const void *data, std::size_t size)
     : buffer(channelFormat, sampleRate) {
     buffer.Data(data, size);
 }
@@ -11,3 +13,7 @@ void Audio::Play(const Source &source) const {
     source.Attach(buffer);
     source.Play();
 }
+
+} // namespace sound
+
+} // namespace lite

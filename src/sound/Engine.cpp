@@ -1,6 +1,8 @@
 #include <xlite/sound/Engine.hpp>
 
-using namespace Lite::Sound;
+namespace lite {
+
+namespace sound {
 
 bool Engine::Play(const Audio &audio) {
     auto source = pool.Fetch();
@@ -8,3 +10,7 @@ bool Engine::Play(const Audio &audio) {
 
     return true;
 }
+
+} // namespace sound
+
+} // namespace lite

@@ -3,9 +3,11 @@
 #include <xlite/oal/Device.hpp>
 #include <AL/al.h>
 
-#define POOL_PREFERRED_SIZE LITE_MAX_MONO_SOURCES + LITE_MAX_STEREO_SOURCES
+constexpr std::size_t POOL_PREFERRED_SIZE = LITE_MAX_MONO_SOURCES + LITE_MAX_STEREO_SOURCES;
 
-using namespace Lite::Sound;
+namespace lite {
+
+namespace sound {
 
 Pool::Pool() {
     for (int i = 0; i < POOL_PREFERRED_SIZE; i++) {
@@ -47,3 +49,7 @@ void Pool::Update() {
         ++it;
     }
 }
+
+} // namespace sound
+
+} // namespace lite

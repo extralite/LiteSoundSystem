@@ -5,31 +5,31 @@
 
 #include <cstdint>
 
-namespace Lite {
+namespace lite {
 
-    namespace Sound {
+namespace sound {
 
-        class LITE_API Source {
-        public:
-            Source();
-            ~Source();
+class LITE_API Source {
+public:
+    Source();
+    ~Source();
 
-            void Play() const;
-            void Stop() const;
-            void Loop(bool loop) const;
-            void Gain(float gain) const;
-            bool IsPlaying() const;
-            void Attach(const Buffer &buffer) const;
-            void Detach() const;
-            bool Available() const;
+    void Play() const;
+    void Stop() const;
+    void Loop(bool loop) const;
+    void Gain(float gain) const;
+    bool IsPlaying() const;
+    void Attach(const Buffer &buffer) const;
+    void Detach() const;
+    bool Available() const;
 
-        private:
-            uint32_t source = 0;
+private:
+    uint32_t source = 0;
 
-            Source(Source &) = delete;
-            Source(Source const &) = delete;
-        };
+    Source(Source &) = delete;
+    Source(Source const &) = delete;
+};
 
-    }// namespace Sound
+} // namespace sound
 
-}// namespace Lite
+} // namespace lite
