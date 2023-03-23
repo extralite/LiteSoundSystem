@@ -2,7 +2,9 @@
 
 #include <AL/alc.h>
 
-using namespace Lite::Sound;
+namespace lite {
+
+namespace sound {
 
 Device::Device(const char *deviceName) {
     device = alcOpenDevice(deviceName);
@@ -20,3 +22,7 @@ Device::~Device() {
     alcDestroyContext(static_cast<ALCcontext *>(context));
     alcCloseDevice(static_cast<ALCdevice *>(device));
 }
+
+} // namespace sound
+
+} // namespace lite

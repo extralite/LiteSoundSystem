@@ -2,26 +2,26 @@
 
 #include <xlite/Config.hpp>
 
-#define LITE_MAX_MONO_SOURCES 64
-#define LITE_MAX_STEREO_SOURCES 64
+constexpr std::size_t LITE_MAX_MONO_SOURCES = 64;
+constexpr std::size_t LITE_MAX_STEREO_SOURCES = 64;
 
-namespace Lite {
+namespace lite {
 
-    namespace Sound {
+namespace sound {
 
-        class LITE_API Device {
-        public:
-            explicit Device(const char *deviceName);
+class LITE_API Device {
+public:
+    explicit Device(const char *deviceName);
 
-            Device() : Device("OpenAL Soft") {}
+    Device() : Device("OpenAL Soft") {}
 
-            ~Device();
+    ~Device();
 
-        private:
-            void *device;
-            void *context;
-        };
+private:
+    void *device;
+    void *context;
+};
 
-    }// namespace Sound
+} // namespace sound
 
-}// namespace Lite
+} // namespace lite
